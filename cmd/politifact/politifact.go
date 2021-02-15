@@ -80,8 +80,9 @@ func main() {
 
 	var wg sync.WaitGroup
 
+	wg.Add(1)
 	go func() {
-		wg.Add(1)
+		defer wg.Done()
 		opts := options.FindOneAndUpdate().SetUpsert(true)
 		for article := range itemChan {
 			filter := bson.D{{Key: "identifier", Value: article.Identifier}}
@@ -98,7 +99,6 @@ func main() {
 			}
 			log.Printf("Updated Article => %+v\n", updatedDocument)
 		}
-		wg.Done()
 	}()
 
 	sdre := regexp.MustCompile(`\s(\w+\s\d+,\s\d+)\s`)
