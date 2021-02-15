@@ -1,0 +1,11 @@
+[mongo]
+uri = "mongodb://localhost:22692"
+database = "collyproject"
+
+[proxyservice]
+url = "http://127.0.0.1:8262"
+api_key = "ulie2Uz~eiph0Pai5eiK"
+
+[agent-service]
+url = "http://127.0.0.1:7575"
+api_key = "ulie2Uz~eiph0Pai5eiK"
